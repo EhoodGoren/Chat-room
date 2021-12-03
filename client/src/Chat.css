@@ -1,0 +1,17 @@
+#chat-screen {
+    height: 80vh;
+    width: 50vw;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+    
+#messages { grid-area: 8 / 1 / 11 / 8; }
+#participants { grid-area: 1 / 8 / 11 / 11; }
+#message-write { grid-area: 1 / 1 / 8 / 8; }
+
+.chat-components {
+    border: 1px black solid;
+}
