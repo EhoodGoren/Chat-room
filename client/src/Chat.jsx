@@ -1,15 +1,14 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import './Chat.css';
+import Messages from './Chat/Messages';
 
-const source = new EventSource('http://localhost:8080/');
-source.onmessage = ()=>console.log('asdf')
+const source = new EventSource('http://localhost:8080/chat');
 
 export default function Chat(props) {
     const [messages, setMessages] = useState([]);
     source.onmessage = (event) => {
-        console.log('got new messages: ', event.data);
-        setMessages(event.data);
+        setMessages(JSON.parse(event.data));
     }
     const messageInput = useRef(null);
     const sendMessage = async () => {
@@ -17,9 +16,7 @@ export default function Chat(props) {
     }
     return (
         <div id='chat-screen'>
-            <div id='messages' className='chat-components'>
-                {messages}
-            </div>
+            <Messages messages={messages} />
             <div id='participants' className='chat-components'></div>
             <div id='message-write' className='chat-components'>
                 <input ref={messageInput} id='user-message' placeholder='Write your message here'></input>

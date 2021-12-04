@@ -2,18 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const messages = [];
-router.get('/', (req, res) => {
+router.get('/chat', (req, res) => {
     console.log('connection');
     res.writeHead(200, {
         'Content-Type': 'text/event-stream'
     });
     setInterval(()=>{
-        // messages.map((message, index) => {
-        //     index === messages.length - 1 ?
-        //     res.write(`data: ${message} \n\n`) :
-        //     res.write(`data: ${message} \n`);
-        // })
-        res.write(`data: ${messages} \n\n`)
+        const data = JSON.stringify(messages);
+        res.write(`data: ${data}\n\n`);
     },3000)
 })
 
