@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     setInterval(() => {
         const data = JSON.stringify(messages);
         res.write(`data: ${data}\n\n`);
-    },3000)
+    }, 3000)
 })
 
 router.get('/participants', (req, res) => {
@@ -19,8 +19,9 @@ router.get('/participants', (req, res) => {
         'Content-Type': 'text/event-stream'
     });
     setInterval(() => {
-        res.write(`data: ${users.length}\n\n`)
-    })
+        const data = JSON.stringify(users)
+        res.write(`data: ${data}\n\n`)
+    }, 3000)
 })
 
 router.post('/message', (req, res, next) => {
