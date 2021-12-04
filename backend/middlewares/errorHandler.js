@@ -9,3 +9,5 @@ function errorHandler(err, req, res, next) {
         return;
     }
 }
+
+module.exports = errorHandler;

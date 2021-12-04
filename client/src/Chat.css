@@ -8,9 +8,9 @@
     grid-row-gap: 0px;
 }
     
-#messages { grid-area: 8 / 1 / 11 / 8; }
+#messages { grid-area: 1 / 1 / 8 / 8; }
 #participants { grid-area: 1 / 8 / 11 / 11; }
-#message-write { grid-area: 1 / 1 / 8 / 8; }
+#message-write { grid-area: 8 / 1 / 11 / 8; }
 
 .chat-components {
     border: 1px black solid;
