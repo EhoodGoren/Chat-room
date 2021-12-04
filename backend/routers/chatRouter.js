@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const messages = [];
-router.get('/chat', (req, res) => {
+router.get('/', (req, res) => {
     console.log('connection');
     res.writeHead(200, {
         'Content-Type': 'text/event-stream'
@@ -13,9 +13,10 @@ router.get('/chat', (req, res) => {
     },3000)
 })
 
-router.post('/', (req, res) => {
-    const message = req.body.message;
-    messages.push(message);
+router.post('/message', (req, res, next) => {
+    const { user, message } = req.body;
+    if(!user || !message) next({status: 400, message: 'Bad Request'});
+    messages.push({user, message});
     res.send('Accepted');
 })
 

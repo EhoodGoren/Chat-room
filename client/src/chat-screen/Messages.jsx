@@ -3,7 +3,7 @@ import React from "react";
 export default function Messages(props) {
     const renderMessages = (messages) => {
         return messages.map(message => (
-            <div className='messages'>{message}</div>
+            <div className='messages'>{`${message.user}: ${message.message}`}</div>
         ))
     }
     return (
